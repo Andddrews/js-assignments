@@ -209,9 +209,32 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(width, height) {
-    throw new Error('Not implemented');
-}
+ function getRectangleString(width, height) {
+        const rows = new Array(height).fill();
+        const result = rows.map(i => []);
+        
+        result.forEach((arr, indx) => {
+        arr.length = width;
+        if (indx == 0) {
+        arr.fill('─');
+        arr[0] = '┌';
+        arr[arr.length-1] = '┐';
+        
+        } else if (indx == rows.length-1) {
+        arr.fill('─');
+        arr[0] = '└';
+        arr[arr.length-1] = '┘';
+        } else {
+        arr.fill(' ');
+        arr[0] = '│';
+        arr[arr.length-1] = '│';
+        }
+        
+        arr.push('\n');
+        });
+        return result.map(column => column.join('')).join('');
+     }
+
 
 
 /**
@@ -230,7 +253,16 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+
+    const directString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
+const decodedString = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ';
+    return str.split('').map(char => {
+		const directIndex = directString.indexOf(char);
+		if (directIndex > -1)
+			return decodedString.charAt(directIndex);
+		else
+			return char; // some symbols like ? . !! etc.
+	}).join('');;
 }
 
 /**
@@ -279,7 +311,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    const cards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣','A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦','A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥','A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
+ {
+    return cards.indexOf(value);
+}
 }
 
 
