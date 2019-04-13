@@ -30,7 +30,7 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num%3==0&&num%5==0){return 'FizzBuzz'} else if (num%3==0){return 'Fizz'} else if (num%5==0){return 'Buzz'} else return num;
 }
 
 
@@ -46,7 +46,8 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    return (n != 1) ? n * getFactorial(n - 1) : 1;
+    
 }
 
 
@@ -63,7 +64,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    var arr =[];
+    var start = n2;
+    while (start>=n1){
+        arr.push(start--)
+    }
+    return arr.reduce((a,i)=>a+i,0);
 }
 
 
@@ -82,7 +88,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+   if (a<(b+c)&&b<(a+c)&&c<(a+b)) {return true} else return false;
 }
 
 
@@ -166,7 +172,13 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    for (var i = 0; i < str.length; i++) {
+        var c = str.charAt(i);
+        if (str.indexOf(c) == i && str.indexOf(c, i + 1) == -1) {
+          return c;
+        }
+      }
+      return null;
 }
 
 
@@ -209,7 +221,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+   return str.split('').reverse().join('');
 }
 
 
@@ -226,7 +238,8 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    num = ''+num;
+    return num.split('').reverse().join('');
 }
 
 
@@ -251,7 +264,12 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    ccn=''+ccn;
+    return ((ccn.split('')
+    .reverse()
+    .map((a,i)=>(i%2!=0)?a=2*a: a=+a )
+    .map(a=>(a>9)?a=a-9:a=a)
+    .reduce(((ac,i)=>ac+i),0))%10==0)?true:false;  
 }
 
 
@@ -356,7 +374,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    return num.toString(n);
 }
 
 
