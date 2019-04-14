@@ -49,13 +49,13 @@ function getComposition(f,g) {
  *
  */
 function getPowerFunction(exponent) {
-    /*return function (){
-        var n = 'power'+'exponent';
-        function n (num){
+    
+        return function (num){
+        
         return Math.pow(num,exponent)
         }
-    }*/
-    throw new Error('Not implemented');
+        
+   // throw new Error('Not implemented');
 }
 
 

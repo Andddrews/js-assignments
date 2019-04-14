@@ -37,7 +37,8 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 function parseDataFromIso8601(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
+   //throw new Error('Not implemented');
 }
 
 
@@ -56,7 +57,10 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+   let year = 1900;
+   year = (new Date(date)).getFullYear();
+   return (new Date(year, 1, 29).getDate() === 29);
+  // throw new Error('Not implemented');
 }
 
 
@@ -76,7 +80,9 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+   var diff =   Date.parse(endDate) - Date.parse(startDate); // разница в миллисекундах
+   return new Date(diff).toString("HH:mm:ss.sss");
+   //throw new Error('Not implemented');
 }
 
 
