@@ -288,7 +288,13 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    var t = (num+"");
+
+    while (t.length>1) {
+      t = t.split("").map(o => +o).reduce((acc, current) => acc+=current, 0)+"";
+     
+    }
+     return +t;
 }
 
 
@@ -314,9 +320,29 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
-}
-
+    var arr = str.split('');
+    var result = true;
+    var bracketsConfig = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>']];
+    while (arr.length && result) {
+        var a = -1;
+        for (var i=0; i<arr.length-1; i++) {
+          for (var j=0; j<bracketsConfig.length; j++) {
+            if (arr[i] === bracketsConfig [j][0] && arr[i+1] === bracketsConfig [j][1] ) {
+              a = i;
+            }
+          }  
+        }
+    
+        if (a === -1) {
+          result = false;
+        } else {
+          arr.splice (a, 2);
+        }
+        
+      }
+      
+      return result;
+      }
 
 /**
  * Returns the human readable string of time period specified by the start and end time.
@@ -350,9 +376,55 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
-}
+    /*var diff;
+        diff =   new Date(endDate).valueOf() - new Date(startDate).valueOf(); // разница в миллисекундах
+      
+        if (diff <= 45000) { // прошло менее 45 секунд
+          return 'a few seconds ago';
+        }
+      
+      
+        else if (45000 < diff && diff<= 90000) {
+          return  'a minute ago';
+        }
+      
+        
+        else if (90000 <diff && diff < 2700000) {
+          return  '2 minutes ago ... 45 minutes ago';
 
+        }
+
+        else if (2700000 < diff <= 5400000) {
+          return  'an hour ago';
+
+        }
+       
+        else if (diff>5400000 && diff<= 79200000) {
+          return  '2 hours ago ... 22 hours ago';
+        } 
+        else  if (79200000 < diff && diff <= 129600000) {
+            return  'a day ago';
+          } 
+          
+          else if (129600000 < diff && diff <= 2160000000) {
+          return  '2 days ago ... 25 days ago';
+        } 
+        else  if ( 2160000000 < diff && diff <= 3888000000) {
+            return  'a month ago';
+          } 
+          else   if (3888000000 < diff && diff <= 2,9808e10) {
+            return  '2 months ago ... 11 months ago';
+          } 
+          else   if (2.9808e10< diff && diff <= 4.7088e10) {
+            return  'a year ago';
+          } 
+          else   if (4.71744e10< diff ) {
+            return  '2 years ago ... 20 years ago';
+          } 
+        }
+*/
+throw new Error('Not implemented');
+}
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of specified number.
