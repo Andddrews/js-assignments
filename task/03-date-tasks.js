@@ -80,9 +80,8 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   var diff =   Date.parse(endDate) - Date.parse(startDate); // разница в миллисекундах
-   return new Date(diff).toString("HH:mm:ss.sss");
-   //throw new Error('Not implemented');
+  
+   throw new Error('Not implemented');
 }
 
 
