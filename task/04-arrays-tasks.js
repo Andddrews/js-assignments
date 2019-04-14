@@ -284,7 +284,7 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  // return arr.splice(0,0,item,item);
+  //return arr.copyWithin();
   throw new Error('Not implemented');
 }
 
@@ -370,7 +370,8 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   return arr.length-arr.filter(Boolean).length;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -388,7 +389,8 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   return arr.filter((a, j)=>a===item).length;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -466,7 +468,9 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+
+  
+throw new Error('Not implemented');
 }
 
 /**
@@ -483,7 +487,9 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+
+   return Array(end - start + 1).fill().map((a, i) => start + i)
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -498,7 +504,10 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   return arr.filter(function(item, pos){
+      return arr.indexOf(item)== pos; 
+    });
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -548,6 +557,7 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
+   
    throw new Error('Not implemented');
 }
 
@@ -592,7 +602,24 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+var h = arr.length/2;
+arr = Array.from(arr);
+console.log(arr);
+if (arr.length == 1) {return arr}
+else if (h%2==0){
+   console.log(h);
+   return arr.slice(h).concat(arr.slice(0,h));
+}
+else {
+   var hf = Math.floor(h);
+   console.log(hf);
+   return arr.slice(hf+1).concat(arr.slice(hf,hf+1)).concat(arr.slice(0,hf));
+}
+
+
+
+
+    //throw new Error('Not implemented');
 }
 
 
